@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    #countdown {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+    #downloadBtn {
+        display: none;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    #downloadBtn:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div id="countdown"></div>
+<div id="expiredMessage"></div>
+<div id="downloadLinkContainer">
+    <a id="downloadLink" href="#" download="B3Test.pdf">
+        <button id="downloadBtn">Download PDF</button>
+    </a>
+</div>
+
+<script>
+    // Set the epoch time (in milliseconds)
+    var epochTime = 1715184000000/* Specify your epoch time here */;
+
+    // Function to calculate and display the countdown timer
+    function updateCountdown() {
+        var currentTime = new Date().getTime();
+        var distance = epochTime - currentTime;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the countdown is over, display the expired message and the download button
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("countdown").innerHTML = "PDF can now be downloaded";
+            document.getElementById("downloadBtn").style.display = "block";
+            document.getElementById("downloadLink").setAttribute("href", "B3Test.pdf");
+        }
+    }
+
+    // Update the countdown every second
+    var countdownInterval = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
