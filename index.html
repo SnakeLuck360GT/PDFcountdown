@@ -41,14 +41,14 @@
 <div id="countdown"></div>
 <div id="expiredMessage"></div>
 <div id="downloadLinkContainer">
-    <a id="downloadLink" href="#" download="B5Test.pdf">
+    <a id="downloadLink" href="#" download="B7Test.pdf">
         <button id="downloadBtn">Download PDF</button>
     </a>
 </div>
 
 <script>
     // Set the epoch time (in milliseconds)
-    var epochTime = 1716548400000/* Specify your epoch time here */;
+    var epochTime = 1717153200000/* Specify your epoch time here */;
 
     // Function to calculate and display the countdown timer
     function updateCountdown() {
@@ -68,7 +68,7 @@
             clearInterval(countdownInterval);
             document.getElementById("countdown").innerHTML = "PDF can now be downloaded";
             document.getElementById("downloadBtn").style.display = "block";
-            document.getElementById("downloadLink").setAttribute("href", "B5Test.pdf");
+            document.getElementById("downloadLink").setAttribute("href", "B7Test.pdf");
         }
     }
 
